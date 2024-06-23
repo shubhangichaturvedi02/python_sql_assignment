@@ -1,0 +1,77 @@
+
+----------------------Creating tables and inserting sample data for testing-------------------------------
+
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(255),
+    email VARCHAR(255),
+    signup_date DATE
+);
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    total_amount DECIMAL(10, 2),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+CREATE TABLE Order_Items (
+    order_item_id INT PRIMARY KEY,
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    price_per_unit DECIMAL(10, 2),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+);
+
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(255),
+    category VARCHAR(255)
+);
+
+INSERT INTO Customers (customer_id, customer_name, email, signup_date) VALUES
+(1, 'John Doe', 'john@example.com', '2022-01-15'),
+(2, 'Jane Smith', 'jane@example.com', '2022-02-20'),
+(3, 'Bob Johnson', 'bob@example.com', '2022-03-25'),
+(4, 'Alice Brown', 'alice@example.com', '2022-04-30'),
+(5, 'Charlie Davis', 'charlie@example.com', '2022-05-10'),
+(6, 'Diana White', 'diana@example.com', '2022-06-05');
+
+select * from Customers;
+
+-- Insert data into Products
+INSERT INTO Products (product_id, product_name, category) VALUES
+(1, 'Laptop', 'Electronics'),
+(2, 'Headphones', 'Electronics'),
+(3, 'Coffee Maker', 'Home Appliances'),
+(4, 'Blender', 'Home Appliances'),
+(5, 'T-shirt', 'Clothing'),
+(6, 'Jeans', 'Clothing');
+
+-- Insert data into Orders
+INSERT INTO Orders (order_id, customer_id, order_date, total_amount) VALUES
+(1, 1, '2023-06-15', 500.00),
+(2, 2, '2023-06-16', 150.00),
+(3, 3, '2023-06-17', 200.00),
+(4, 4, '2023-06-18', 100.00),
+(5, 5, '2023-06-19', 50.00),
+(6, 6, '2023-06-20', 300.00),
+(7, 1, '2023-06-21', 1000.00),
+(8, 2, '2023-06-22', 300.00),
+(9, 3, '2023-06-23', 500.00),
+(10, 4, '2023-06-24', 200.00);
+
+-- Insert data into Order_Items
+INSERT INTO Order_Items (order_item_id, order_id, product_id, quantity, price_per_unit) VALUES
+(1, 1, 1, 1, 500.00),
+(2, 2, 2, 3, 50.00),
+(3, 3, 3, 2, 100.00),
+(4, 4, 4, 1, 100.00),
+(5, 5, 5, 1, 50.00),
+(6, 6, 6, 3, 100.00),
+(7, 7, 1, 2, 500.00),
+(8, 8, 2, 3, 100.00),
+(9, 9, 3, 1, 500.00),
+(10, 10, 4, 2, 100.00);
