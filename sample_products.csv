@@ -1,0 +1,6 @@
+product_id,product_name,category,price,quantity_sold,rating,review_count
+1,Product A,Electronics,299.99,150,4.5,50
+2,Product B,Electronics,399.99,200,4.0,100
+3,Product C,Home,49.99,300,3.5,150
+4,Product D,Home,99.99,250,4.8,75
+5,Product E,Books,19.99,100,4.7,200
